@@ -3,12 +3,10 @@ import { useMemo, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   BadgeCheck,
-  CalendarDays,
   Check,
   ChevronRight,
   Menu,
   MessageCircle,
-  Phone,
   ShieldCheck,
   Sparkles,
   Star,
@@ -167,7 +165,7 @@ function Index() {
         ["How does name correction work?", "We study the vibration of your current name alongside your birth numbers, then recommend practical spelling options that preserve your identity."],
         ["What details do you need?", "Your full name, birth date, WhatsApp number and the area where you want clarity are enough for the initial audit."],
         ["Are my birth details private?", "Yes. Your details are used only to prepare and communicate your consultation, and are never displayed publicly."],
-      ].map(([q, a]) => <AccordionItem key={q} value={q}><AccordionTrigger className="py-6 text-base hover:no-underline">{q}</AccordionTrigger><AccordionContent className="leading-7 text-muted-foreground">{a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
+      ].map(([q, a]) => <AccordionItem key={q} value={q ?? "faq"}><AccordionTrigger className="py-6 text-base hover:no-underline">{q}</AccordionTrigger><AccordionContent className="leading-7 text-muted-foreground">{a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
 
       <footer className="px-5 py-10 text-center text-sm text-muted-foreground"><p className="font-display text-xl text-primary">AstroNumero Clarity</p><p className="mt-3">Guidance illuminates the path. Your choices shape the journey.</p></footer>
 
