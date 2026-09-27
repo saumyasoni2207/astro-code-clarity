@@ -133,12 +133,14 @@ function normalizeHex(value: string | undefined, fallback: string) {
   if (typeof value !== "string") return fallback;
   const match = value.trim().match(/^#([\da-f]{3}|[\da-f]{6})$/i);
   if (!match) return fallback;
-  const digits = match[1].toLowerCase();
+  const digits = (match[1] ?? "").toLowerCase();
   return `#${digits.length === 3 ? digits.replace(/./g, (d) => d + d) : digits}`;
 }
 
 function hexToHsl(hex: string): Hsl {
-  const [red, green, blue] = [1, 3, 5].map((index) => Number.parseInt(hex.slice(index, index + 2), 16) / 255);
+  const red = Number.parseInt(hex.slice(1, 3), 16) / 255;
+  const green = Number.parseInt(hex.slice(3, 5), 16) / 255;
+  const blue = Number.parseInt(hex.slice(5, 7), 16) / 255;
   const max = Math.max(red, green, blue);
   const min = Math.min(red, green, blue);
   const l = (max + min) / 2;
@@ -186,7 +188,7 @@ function colorShift(base: string, target: string) {
 /* ── options ─────────────────────────────────────────────────────────── */
 
 function selectFont(value: string | undefined, options: readonly PageFont[]) {
-  return options.find((option) => option.value === value) ?? options[0];
+  return options.find((option) => option.value === value) ?? options[0] ?? { value: "system", label: "System", stack: "system-ui" };
 }
 
 function selectWeight(value: string | undefined, options: readonly string[], fallback: string) {
@@ -209,7 +211,7 @@ function fontHrefFor(fonts: readonly PageFont[]) {
  */
 export function splitTypographyProps<T extends PageTypographyProps>(props: T) {
   const { headingFont, bodyFont, headingWeight, bodyWeight, primaryColor, headingSize, bodySize, headingLetterSpacing, ...rest } = props;
-  const type: PageTypographyProps = {
+  const type = {
     headingFont,
     bodyFont,
     headingWeight,
@@ -281,7 +283,9 @@ export function usePageTypography(recipe: PageTypographyRecipe, props: PageTypog
       filter,
     };
 
-    return { css: recipe.css(type), fontHref: fontHrefFor([heading, body]), inlineStyles: recipe.inlineStyles?.(type) };
+    const fontHref = fontHrefFor([heading, body]);
+    const inlineStyles = recipe.inlineStyles?.(type);
+    return { css: recipe.css(type), ...(fontHref ? { fontHref } : {}), ...(inlineStyles ? { inlineStyles } : {}) };
   }, [recipe, headingFont, bodyFont, headingWeight, bodyWeight, primaryColor, headingSize, bodySize, headingLetterSpacing]);
 }
 
