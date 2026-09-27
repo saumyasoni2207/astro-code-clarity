@@ -1,35 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { OrbGallery } from "@/shaders/orb-gallery/OrbGallery";
-import "@/shaders/threeui.css";
-
+// No head() here: the home route inherits title/description/og/twitter from
+// __root.tsx, and ships no og:image so serve-time hosting can inject the
+// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  ssr: false,
-  head: () => ({
-    meta: [
-      { title: "Orb Gallery | Interactive Interface Archive" },
-      {
-        name: "description",
-        content: "Explore a slowly turning sphere of curated interface references with tactile drag and hover interactions.",
-      },
-      { property: "og:title", content: "Orb Gallery | Interactive Interface Archive" },
-      {
-        property: "og:description",
-        content: "Explore a slowly turning sphere of curated interface references with tactile drag and hover interactions.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Scene,
+  component: Index,
 });
 
-function Scene() {
+// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+function Index() {
   return (
-    <main className="h-svh min-h-[640px] w-full bg-background">
-      <div className="shader-frame h-full w-full">
-        <OrbGallery />
-      </div>
-    </main>
+    <div
+      className="flex min-h-screen items-center justify-center"
+      style={{ backgroundColor: "#fcfbf8" }}
+    >
+      <img
+        data-lovable-blank-page-placeholder="REMOVE_THIS"
+        src="https://cdn.gpteng.co/blank-app-v1.svg"
+        alt="Your app will live here!"
+      />
+    </div>
   );
 }
