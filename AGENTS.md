@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the Kage authored HTML and its local runtime/assets byte-exact; the React route uses the registered Kage component seam and iframe so its original scroll, navigation, and WebGL interactions remain intact.
