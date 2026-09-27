@@ -1,23 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { KageLandingPage } from "../shaders/landing-pages/LandingPages";
+import "../shaders/threeui.css";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Kage — Where stillness reveals the unseen" },
+      { name: "description", content: "A five-chapter night walk through a Kyoto mountain temple. Charred cypress, lantern light and a vermilion moon, rendered live in WebGL." },
+      { property: "og:title", content: "Kage — Where stillness reveals the unseen" },
+      { property: "og:description", content: "Explore Kage, an interactive five-chapter night walk through a Kyoto mountain temple." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Scene,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Scene() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <div className="shader-frame h-dvh w-full overflow-hidden bg-background">
+      <KageLandingPage
+        className="h-full w-full"
+        headingFont="onest"
+        bodyFont="onest"
+        headingWeight="400"
+        bodyWeight="300"
+        primaryColor="#e0231c"
+        headingSize={46}
+        bodySize={17}
+        headingLetterSpacing={-0.012}
       />
     </div>
   );
