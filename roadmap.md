@@ -1,0 +1,2 @@
+- [ ] Replace Kage home experience with AstroNumero Clarity content in an editorial chapter-style format.
+- [ ] Implement and verify audit form, confirmation, calculator, pricing, reviews, FAQ, and mobile actions.
