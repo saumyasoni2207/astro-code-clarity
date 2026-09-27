@@ -211,15 +211,15 @@ function fontHrefFor(fonts: readonly PageFont[]) {
  */
 export function splitTypographyProps<T extends PageTypographyProps>(props: T) {
   const { headingFont, bodyFont, headingWeight, bodyWeight, primaryColor, headingSize, bodySize, headingLetterSpacing, ...rest } = props;
-  const type = {
-    headingFont,
-    bodyFont,
-    headingWeight,
-    bodyWeight,
-    primaryColor,
-    headingSize,
-    bodySize,
-    headingLetterSpacing,
+  const type: PageTypographyProps = {
+    ...(headingFont !== undefined && { headingFont }),
+    ...(bodyFont !== undefined && { bodyFont }),
+    ...(headingWeight !== undefined && { headingWeight }),
+    ...(bodyWeight !== undefined && { bodyWeight }),
+    ...(primaryColor !== undefined && { primaryColor }),
+    ...(headingSize !== undefined && { headingSize }),
+    ...(bodySize !== undefined && { bodySize }),
+    ...(headingLetterSpacing !== undefined && { headingLetterSpacing }),
   };
   return [type, rest as Omit<T, keyof PageTypographyProps>] as const;
 }
