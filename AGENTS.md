@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the Kage authored HTML and its local runtime/assets byte-exact; the React route uses the registered Kage component seam and iframe so its original scroll, navigation, and WebGL interactions remain intact.
+- The home route now uses a standalone AstroNumero React page with chapter-style visual pacing, leaving the original Kage source untouched; this permits accessible native form and calculator interactions.

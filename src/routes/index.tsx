@@ -1,35 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { KageLandingPage } from "../shaders/landing-pages/LandingPages";
-import "../shaders/threeui.css";
+import { AstroPage } from "../components/astronumero/AstroPage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kage — Where stillness reveals the unseen" },
-      { name: "description", content: "A five-chapter night walk through a Kyoto mountain temple. Charred cypress, lantern light and a vermilion moon, rendered live in WebGL." },
-      { property: "og:title", content: "Kage — Where stillness reveals the unseen" },
-      { property: "og:description", content: "Explore Kage, an interactive five-chapter night walk through a Kyoto mountain temple." },
+      { title: "Online Numerology & Kundli Consultation | AstroNumero Clarity" },
+      { name: "description", content: "Get instant clarity on Career, Wealth, Marriage & Business with Vedic Kundli Insights and Life Path Numerology. Claim your free audit today!" },
+      { property: "og:title", content: "Online Numerology & Kundli Consultation | AstroNumero Clarity" },
+      { property: "og:description", content: "Explore your Life Path Number and request a free Kundli & Destiny Audit with AstroNumero Clarity." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Scene,
+  component: AstroPage,
 });
-
-function Scene() {
-  return (
-    <div className="shader-frame h-dvh w-full overflow-hidden bg-background">
-      <KageLandingPage
-        className="h-full w-full"
-        headingFont="onest"
-        bodyFont="onest"
-        headingWeight="400"
-        bodyWeight="300"
-        primaryColor="#e0231c"
-        headingSize={46}
-        bodySize={17}
-        headingLetterSpacing={-0.012}
-      />
-    </div>
-  );
-}
