@@ -95,7 +95,7 @@ export function AstroPage() {
         <div className="astro-hero-shade"/>
         <div className="astro-hero-content">
           <div className="astro-kicker"><span className="astro-kicker-dot"/> ASTRONUMERO CLARITY · THE ART OF KNOWING YOURSELF <span className="astro-kicker-rule"/> 01 / 04</div>
-          <h1 id="hero-title">Discover your life's <em>hidden blueprint.</em></h1>
+          <h1 id="hero-title">Discover your life's <em>hidden blueprint</em><span className="astro-hero-h1-tail"> through Numerology &amp; Kundli Insights.</span></h1>
           <p>Through numerology & Kundli insights, find a new perspective on career, wealth, marriage and the choices that shape your future.</p>
           <div className="astro-hero-actions"><Button asChild className="astro-primary-button"><a href="#audit">Get Free Kundli Checkup <ArrowUpRight/></a></Button><Button asChild variant="outline" className="astro-outline-button"><a href="#services">View service packages <ArrowRight/></a></Button></div>
         </div>
