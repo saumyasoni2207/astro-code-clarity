@@ -11,3 +11,5 @@
 .astro-dialog button,.astro-dialog a{min-height:48px}
 .astro-dialog .astro-primary-button{font-size:11px;white-space:normal;line-height:1.4;text-align:center}
 [data-radix-dialog-overlay]{backdrop-filter:blur(12px)}
+
+@media(max-width:760px){.astro-hero{min-height:76svh;padding-bottom:68px}.astro-mobile-bar a{display:flex;align-items:center;justify-content:center;gap:5px}}
